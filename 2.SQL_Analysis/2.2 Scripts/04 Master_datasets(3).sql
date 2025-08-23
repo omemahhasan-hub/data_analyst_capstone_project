@@ -74,22 +74,23 @@ GROUP BY rc.Emp_Source, rc.Jan, rc.Feb, rc.march, rc.april, rc.may, rc.june,
  
 -- Master dataset - 3
 -- Department-level metrics combining all datasets
+
+USE capstone;
 SELECT 
-    h.Department,
-    
+    h.Department,   
     -- Headcount & demographics
     COUNT(*) as total_employees,
-    concat(round(AVG(h.Age),1),' ','yrs') as avg_age,
-    COUNT(CASE WHEN h.Sex = 'F' THEN 1 END) as female_count,
-    COUNT(CASE WHEN h.Sex = 'M' THEN 1 END) as male_count,
+    CONCAT(ROUND(AVG(h.Age), 1), ' ', 'yrs') as avg_age,
+    SUM(CASE WHEN h.Sex = 'Female' THEN 1 ELSE 0 END) as female_count,
+    SUM(CASE WHEN h.Sex = 'Male' THEN 1 ELSE 0 END) as male_count,
     
     -- Performance & salary (using salary grid reference)
-    round(AVG(h.Pay),1) as avg_payrate,
-    concat('$',round(AVG(s.sal_mid),1)) as avg_market_salary,
-    round(AVG(h.Performance_Score),1) as avg_performance_score,
+    ROUND(AVG(h.Pay), 1) as avg_payrate,
+    CONCAT('$', ROUND(AVG(s.sal_mid), 1)) as avg_market_salary,
+    ROUND(AVG(h.Performance_Score), 1) as avg_performance_score,
     
     -- **Recruitment efficiency**
-    concat('$',SUM(rc.total)) as total_dept_recruitment_cost,
+    CONCAT('$', SUM(rc.total)) as total_dept_recruitment_cost,
     
     -- Turnover
     ROUND(SUM(CASE WHEN h.Termination_date IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) as turnover_rate
@@ -99,4 +100,3 @@ LEFT JOIN production_staff p ON h.Emp_FName = p.Emp_FName AND h.Emp_LName = p.Em
 LEFT JOIN salary_grid s ON h.Position = s.Position
 LEFT JOIN recruiting_costs rc ON h.Emp_Source = rc.Emp_Source
 GROUP BY h.Department;
- 
