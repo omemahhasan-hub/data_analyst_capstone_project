@@ -1,0 +1,7 @@
+Department,total_employees,avg_age,female_count,male_count,avg_payrate,avg_market_salary,avg_performance_score,total_dept_recruitment_cost,turnover_rate
+"Admin Offices",10,"32.1 yrs",6,4,31.9,$53531.4,9,$67634,30.0
+"Executive Office",1,"63.0 yrs",1,0,80.0,NULL,0,$3509,0.0
+IT/IS,41,"37.8 yrs",19,22,44.8,$79062.8,17.6,$71396,24.4
+Production,206,"39.1 yrs",127,79,23.1,$42387.4,7.9,$1000067,39.3
+Sales,31,"38.6 yrs",15,16,55.5,NULL,5.8,$166128,12.9
+"Software Engineering",10,"35.4 yrs",6,4,48.7,NULL,18,$60358,30.0
