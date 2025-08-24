@@ -23,6 +23,13 @@ order by total desc;
 
 
 
+-- pay range percentage 
+select distinct(pay_equity_status) as pay_range, count(*) as total, round((count(*)/299) *100 ,1) as percet
+from master_table
+group by pay_range
+
+
+
 -- citizenship
 select count(*) as us_citizen from master_table 
 group by CitizenDesc
