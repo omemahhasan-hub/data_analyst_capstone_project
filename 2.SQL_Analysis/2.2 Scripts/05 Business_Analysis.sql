@@ -33,21 +33,34 @@ select distinct(Performance_Score) as per_sc, count(*) as total from production_
 group by per_sc;
 
 
+
 -- Performance vs compensation correlation
 SELECT 
      CASE 
-        WHEN p.Performance_Score = 'Fully Meets' or p.Performance_Score = 'Exceeds' THEN 'High Performer'
+        WHEN p.Performance_Score IN ('Fully Meets', 'Exceeds')
+             THEN 'High Performer'
         ELSE 'Low Performer'
-    END as performance_category,
-    COUNT(*) as employee_count,
-    ROUND(AVG(h.Pay), 0) as avg_payrate,
-    ROUND(AVG(p.Daily_Error_Rate), 2) as avg_error_rate,
-    concat('$',round(avg(sal_mid),0)) as avr_sal
+    END AS performance_category,
+    
+    COUNT(*) AS employee_count,
+    ROUND(AVG(h.Pay), 0) AS avg_payrate,
+    ROUND(AVG(p.Daily_Error_Rate), 2) AS avg_error_rate,
+    CONCAT('$', ROUND(AVG(s.sal_mid), 0)) AS avr_sal,
+    
+    -- Count only "Below Avg" employees
+    SUM(CASE WHEN pe.pay_equity_status = 'Below Range' THEN 1 ELSE 0 END) AS below_avg_count
+
 FROM core_hr h
-left JOIN production_staff p ON     UPPER(TRIM(h.Emp_FName)) = UPPER(TRIM(p.Emp_FName)) AND 
-    UPPER(TRIM(h.Emp_LName)) = UPPER(TRIM(p.Emp_LName))
-left JOIN salary_grid s ON h.Position = s.Position
-left JOIN recruiting_costs rc ON h.Emp_Source = rc.Emp_Source
+LEFT JOIN production_staff p 
+    ON UPPER(TRIM(h.Emp_FName)) = UPPER(TRIM(p.Emp_FName)) 
+   AND UPPER(TRIM(h.Emp_LName)) = UPPER(TRIM(p.Emp_LName))
+LEFT JOIN salary_grid s 
+    ON h.Position = s.Position
+LEFT JOIN recruiting_costs rc 
+    ON h.Emp_Source = rc.Emp_Source
+LEFT JOIN master_table pe   -- ✅ join the table with pay_equity_status
+    ON h.Emp_ID = pe.Emp_ID   -- (replace with the correct join key!)
+
 GROUP BY performance_category;
 
 
