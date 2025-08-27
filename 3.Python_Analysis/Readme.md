@@ -2,7 +2,6 @@
 
 - [Project Overview](#-project-overview)
 - [Skills Demonstrated](#-skills-demonstrated)
-- [Data Pipeline Integration](#-data-pipeline-integration)
 - [Technical Implementation](#-technical-implementation)
 - [Key Business Insights](#-key-business-insights-discovered)
 - [Visualizations Created](#-visualizations-created)
