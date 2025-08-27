@@ -65,12 +65,12 @@ df3 = pd.read_sql("SELECT * FROM master_table3", conn)  # Department summary (6 
 **Pay Band Analysis**:
 - **76.9% (230) of workforce** paid below salary bands (retention risk)
 - **Production Department**: Largest equity gaps identified
-- **High performers below band**: 128 employees flagged as flight risks
+- **Employees below band**: 230 employees flagged as flight risks
 
 ### Department Performance Patterns
 **Turnover Rate Analysis**:
-- **Production**: 39% turnover rate (critical intervention needed)
-- **IT Department**: 24% turnover despite highest salaries ($79,063 avg)
+- **Production**: 39.3% turnover rate (critical intervention needed)
+- **IT Department**: 24.4% turnover despite highest salaries ($79,063 avg)
 - **Sales**: 12.9% turnover (most stable department)
 
 **Performance-Compensation Link**:
@@ -82,50 +82,57 @@ df3 = pd.read_sql("SELECT * FROM master_table3", conn)  # Department summary (6 
 **Cost-Effectiveness Rankings**:
 - **Employee Referrals**: $0 cost, 3.2 performance score (optimal ROI)
 - **Information Professional Society**: Low cost, 3.3 performance score
-- **CareerBuilder**: $7,790 cost for single hire (discontinue immediately)
+- **CareerBuilder**: $7,790 cost for single hire (Only one hired)
 
 **Strategic Insight**: Low-cost and free recruitment sources deliver superior performance compared to expensive channels.
 
 ### Workforce Correlation Analysis
 **Key Relationships Identified**:
-- **Tenure-Performance**: 0.15 positive correlation
-- **Pay-Performance**: 0.23 correlation for production staff
-- **Age-Salary**: Strong positive correlation (0.31)
-- **Department-Retention**: Significant variance requiring targeted strategies
+ **Tenure–Performance (0.15):** Slight positive correlation — employees with longer tenure tend to perform marginally better.  
+ **Tenure–Pay (0.12):** Weak positive relationship — tenure has only a small influence on pay levels.  
+ **Performance–Pay (0.04):** Almost no correlation — strong performance is not strongly rewarded through pay in this dataset.  
+
+ *Business Insight:* Current compensation strategy may not effectively incentivize or reward high performance.
 
 ## 📊 Visualizations Created
 
 ### 1. Gender Pay Equity Analysis
 **Type**: Box plot comparison  
-**Finding**: $4,000 annual gap confirmed across departments  
+**Finding**: $8,320 annual gap confirmed across departments  
 **Business Impact**: Quantifies legal compliance risk and retention threat
 
 ### 2. Department Turnover Analysis
-**Type**: Color-coded bar chart  
+**Type**: Bar chart  
 **Finding**: Production 39% turnover requires immediate intervention  
-**Business Impact**: Identifies $200,000 annual productivity loss
+**Business Impact**: Identifies $3.9 million annual productivity loss
 
-### 3. Recruitment ROI Effectiveness
-**Type**: Multi-dimensional scatter plot with bubble sizing  
+### 3. Pay Equity Department Breakdown
+**Type**: Multi-dimensional scatter plot with bubble sizing   
+**Finding**: Production shows largest pay equity gaps  
+**Business Impact**: Prioritizes HR audit focus and budget allocation
+
+### 4. Recruitment ROI Effectiveness
+**Type**: Bar chart  
 **Finding**: Employee referrals provide optimal cost-performance ratio  
-**Business Impact**: $156,000 potential annual recruitment savings
+**Business Impact**: 84 hired with $0 cost from 8 sources
 
-### 4. Performance-Compensation Analysis
+### 5. Performance-Compensation Analysis
 **Type**: Box plot by performance categories  
 **Finding**: 5% pay premium validates merit-based compensation  
 **Business Impact**: Supports expanded performance-based pay structure
-
-### 5. Pay Equity Department Breakdown
-**Type**: Percentage analysis bar chart  
-**Finding**: Production shows largest pay equity gaps  
-**Business Impact**: Prioritizes HR audit focus and budget allocation
 
 ### 6. Correlation Matrix Analysis
 **Type**: Statistical heatmap  
 **Finding**: Key relationships between tenure, performance, and pay  
 **Business Impact**: Informs predictive retention modeling
 
-## 🔧 Advanced Python Techniques Demonstrated
+### 7. Demographics and Diversity Analysis
+**Type**: Pie chart 
+**Finding**: Employee Distribution by Race/Ethnicity with majority of Whites 63.2% and Natives and Hispanic as minority with 1.3% each
+**Business Impact**: Needs more diversity
+
+
+##  Advanced Python Techniques Demonstrated
 
 ### Statistical Analysis & Business Logic
 ```python
@@ -188,12 +195,12 @@ plt.scatter(df['cost_per_hire'], df['avg_performance_by_source'],
 
 ### Quantified Impact
 **Cost Optimization**:
-- $156,000 annual recruitment savings through source optimization
-- $200,000 retention improvement potential in Production department
-- $4,000 per employee pay equity gap quantification
+- $7,790 cost for single hire (Only one hired)
+- $3.9 million annual productivity loss in Production department
+- $8,320 per employee pay equity gap quantification
 
 **Risk Mitigation**:
-- 23 high-performing employees identified as flight risks
+- 128 high performing employees identified as flight risks
 - Department-specific turnover interventions prioritized
 - Manager training needs quantified (Webster Butler team)
 
