@@ -43,60 +43,90 @@ left JOIN recruiting_costs rc ON h.Emp_Source = rc.Emp_Source;
 
 -- Master dataset -2
 -- **This specifically uses the recruiting costs data!**
+
+USE capstone;
+CREATE TABLE master_table2 AS
 SELECT 
     rc.Emp_Source,
-    
-    -- **Recruitment costs (from recruiting_costs)**
+    -- Recruitment costs
     rc.Jan, rc.Feb, rc.march, rc.april, rc.may, rc.june,
     rc.july, rc.Aug, rc.sep, rc.oct, rc.nov, rc.decem,
-    rc.total as total_recruitment_cost,
+    rc.total AS total_recruitment_cost,
     
-    -- **Hiring effectiveness**
-    COUNT(h.Emp_FName) as employees_hired_from_source,    
-    -- **Cost per hire**
+    -- Hiring effectiveness
+    COUNT(h.Emp_FName) AS employees_hired_from_source,
+    
+    -- Cost per hire
     CASE WHEN COUNT(h.Emp_FName) > 0 
          THEN ROUND(rc.total / COUNT(h.Emp_FName), 2) 
-         ELSE 0 END as cost_per_hire,
+         ELSE 0 END AS cost_per_hire,
     
-    -- **Quality metrics**
-    round(AVG(h.Performance_Score),2) as avg_performance_by_source,
-    round(AVG(DATEDIFF(COALESCE(h.Termination_date, CURDATE()), h.Hire_date) / 365.0),2) as avg_tenure_by_source,
-    SUM(CASE WHEN h.Termination_date IS NOT NULL THEN 1 ELSE 0 END) as terminated_from_source,
+    ROUND(AVG(
+    CASE REPLACE(REPLACE(TRIM(UPPER(h.Performance_Score)), '\r', ''), '\n', '')
+        WHEN 'EXCEPTIONAL' THEN 5
+        WHEN 'EXCEEDS' THEN 4
+        WHEN 'FULLY MEETS' THEN 3
+        WHEN '90-DAY MEETS' THEN 2.5
+        WHEN 'NEEDS IMPROVEMENT' THEN 2
+        WHEN 'PIP' THEN 1
+        ELSE NULL
+    END
+),1) AS avg_performance_score,
     
-    -- **ROI calculation**
-    round(AVG(h.Pay),2) as avg_salary_by_source
+    ROUND(AVG(DATEDIFF(COALESCE(h.Termination_date, CURDATE()), h.Hire_date) / 365.0), 2) AS avg_tenure_by_source,
+    SUM(CASE WHEN h.Termination_date IS NOT NULL THEN 1 ELSE 0 END) AS terminated_from_source,
+    
+    -- ROI calculation
+    ROUND(AVG(h.Pay), 2) AS avg_salary_by_source
+
 FROM recruiting_costs rc
-LEFT JOIN core_hr h ON rc.Emp_Source = h.Emp_Source
+LEFT JOIN core_hr h 
+       ON rc.Emp_Source = h.Emp_Source
 GROUP BY rc.Emp_Source, rc.Jan, rc.Feb, rc.march, rc.april, rc.may, rc.june,
          rc.july, rc.Aug, rc.sep, rc.oct, rc.nov, rc.decem, rc.total;
-         
+
          
  
 -- Master dataset - 3
 -- Department-level metrics combining all datasets
 
 USE capstone;
+CREATE TABLE master_table3 AS
 SELECT 
-    h.Department,   
+    h.Department,
     -- Headcount & demographics
-    COUNT(*) as total_employees,
-    CONCAT(ROUND(AVG(h.Age), 1), ' ', 'yrs') as avg_age,
-    SUM(CASE WHEN h.Sex = 'Female' THEN 1 ELSE 0 END) as female_count,
-    SUM(CASE WHEN h.Sex = 'Male' THEN 1 ELSE 0 END) as male_count,
+    COUNT(*) AS total_employees,
+    CONCAT(ROUND(AVG(h.Age), 1), ' ', 'yrs') AS avg_age,
+    SUM(CASE WHEN h.Sex = 'Female' THEN 1 ELSE 0 END) AS female_count,
+    SUM(CASE WHEN h.Sex = 'Male' THEN 1 ELSE 0 END) AS male_count,
     
     -- Performance & salary (using salary grid reference)
-    ROUND(AVG(h.Pay), 1) as avg_payrate,
-    CONCAT('$', ROUND(AVG(s.sal_mid), 1)) as avg_market_salary,
-    ROUND(AVG(h.Performance_Score), 1) as avg_performance_score,
+    ROUND(AVG(h.Pay), 1) AS avg_payrate,
+     ROUND(AVG(s.sal_mid), 1) AS avg_market_salary,
     
-    -- **Recruitment efficiency**
-    CONCAT('$', SUM(rc.total)) as total_dept_recruitment_cost,
+    ROUND(AVG(
+    CASE REPLACE(REPLACE(TRIM(UPPER(h.Performance_Score)), '\r', ''), '\n', '')
+        WHEN 'EXCEPTIONAL' THEN 5
+        WHEN 'EXCEEDS' THEN 4
+        WHEN 'FULLY MEETS' THEN 3
+        WHEN '90-DAY MEETS' THEN 2.5
+        WHEN 'NEEDS IMPROVEMENT' THEN 2
+        WHEN 'PIP' THEN 1
+        ELSE NULL
+    END
+),1) AS avg_performance_score,
+    -- Recruitment efficiency
+    CONCAT('$', SUM(rc.total)) AS total_dept_recruitment_cost,
     
     -- Turnover
-    ROUND(SUM(CASE WHEN h.Termination_date IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) as turnover_rate
+    ROUND(SUM(CASE WHEN h.Termination_date IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) AS turnover_rate
     
 FROM core_hr h
-LEFT JOIN production_staff p ON h.Emp_FName = p.Emp_FName AND h.Emp_LName = p.Emp_LName
-LEFT JOIN salary_grid s ON h.Position = s.Position
-LEFT JOIN recruiting_costs rc ON h.Emp_Source = rc.Emp_Source
+LEFT JOIN production_staff p 
+       ON h.Emp_FName = p.Emp_FName AND h.Emp_LName = p.Emp_LName
+LEFT JOIN salary_grid s 
+       ON h.Position = s.Position
+LEFT JOIN recruiting_costs rc 
+       ON h.Emp_Source = rc.Emp_Source
 GROUP BY h.Department;
+
