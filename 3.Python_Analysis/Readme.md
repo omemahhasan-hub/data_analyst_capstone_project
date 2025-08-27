@@ -6,7 +6,7 @@
 - [Technical Implementation](#-technical-implementation)
 - [Key Business Insights](#-key-business-insights-discovered)
 - [Visualizations Created](#-visualizations-created)
-- [Advanced Python Techniques](#-advanced-python-techniques-demonstrated)
+- [Advanced Python Techniques](#advanced-python-techniques-demonstrated)
 - [Business Value](#-business-value-demonstrated)
 
 ## 📊 Project Overview
