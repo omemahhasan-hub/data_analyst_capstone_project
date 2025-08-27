@@ -183,7 +183,7 @@ plt.scatter(df['cost_per_hire'], df['avg_performance_by_source'],
 
 ## 📁 Project Deliverable
 
-**Analysis Notebook**: `hr_analytics_capstone.ipynb` - Complete end-to-end analysis with:
+**Analysis Notebook**: `hr_analytics_capstone_portfolio.ipynb` - Complete end-to-end analysis with:
 - Database connectivity and data validation
 - Statistical analysis and correlation studies
 - Professional visualizations for executive presentation  
