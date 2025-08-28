@@ -1,43 +1,62 @@
 -- Master dataset - 1
 -- Using all 4 datasets
+
 USE capstone;
+CREATE TABLE master_table AS
 SELECT 
     -- Core identifiers
     h.Emp_FName, h.Emp_LName, h.Emp_ID,
     
-    -- Demographics (from production)
+    -- Demographics (from stg_production)
     h.Age, h.Sex, h.Marital_status, h.RaceDesc, h.hisp_latina, 
     h.CitizenDesc, h.State, h.Zip,
     
-    -- Employment details (from core_hr)
+    -- Employment details (from stg_core_hr)
     h.Department, h.Position, h.Pay, h.Manager_Name,
-    h.Hire_date, h.Termination_date, h.Reason_Termination, h.Emp_Status,
+    h.Hire_date, h.Termination_date, h.Reason_Termination, h.Emp_Status, h.Emp_Source,
     
-    -- Performance & behavior (from core_hr)
-    p.Performance_Score, p.Daily_Error_Rate, 
+    -- Performance & behavior - using the same source for consistency
+    h.Performance_Score,
+    ROUND(
+        CASE REPLACE(REPLACE(TRIM(UPPER(h.Performance_Score)), '\r', ''), '\n', '')
+            WHEN 'EXCEPTIONAL' THEN 5
+            WHEN 'EXCEEDS' THEN 4
+            WHEN 'FULLY MEETS' THEN 3
+            WHEN '90-DAY MEETS' THEN 2.5
+            WHEN 'NEEDS IMPROVEMENT' THEN 2
+            WHEN 'PIP' THEN 1
+            ELSE NULL
+        END
+    , 1) AS performance_score_num,
+    
+    -- Additional performance metrics (from stg_production)
+    p.Daily_Error_Rate, 
     p.day_90_Complaints, p.Abutments_Hour_Wk_1, p.Abutments_Hour_Wk_2,
     
-    -- Recruitment source (from both core_hr and production)
-    COALESCE(h.Emp_Status, p.Emp_Status) as Recruitment_Source,
+    -- Recruitment source (from stg_core_hr)
+    h.Emp_Source as Recruitment_Source,
     
-    -- Salary benchmarking (from salary_grid)
+    -- Salary benchmarking (from stg_salary_grid)
     s.sal_min, s.sal_mid, s.sal_max,
     
-    -- **NEW: Recruitment costs (from recruiting_costs)**
+    -- **NEW: Recruitment costs (from stg_recruiting_costs)**
     rc.Jan + rc.Feb + rc.march + rc.april + rc.may + rc.june + 
     rc.july + rc.Aug + rc.sep + rc.oct + rc.nov + rc.decem as total_recruitment_cost_by_source,
+    
     -- Calculated fields
-    DATEDIFF(COALESCE(h.Termination_date, CURDATE()), h.Hire_date) / 365.0 as tenure_years,
+    ROUND(DATEDIFF(COALESCE(h.Termination_date, CURDATE()), h.Hire_date) / 365.0, 2) as tenure_years,
     CASE 
         WHEN h.Pay < s.sal_min THEN 'Below Range'
         WHEN h.Pay > s.sal_max THEN 'Above Range'
         ELSE 'Within Range' 
     END as pay_equity_status
+    
 FROM core_hr h
-left JOIN production_staff p ON     UPPER(TRIM(h.Emp_FName)) = UPPER(TRIM(p.Emp_FName)) AND 
+LEFT JOIN production_staff p ON 
+    UPPER(TRIM(h.Emp_FName)) = UPPER(TRIM(p.Emp_FName)) AND 
     UPPER(TRIM(h.Emp_LName)) = UPPER(TRIM(p.Emp_LName))
-left JOIN salary_grid s ON h.Position = s.Position
-left JOIN recruiting_costs rc ON h.Emp_Source = rc.Emp_Source;
+LEFT JOIN salary_grid s ON h.Position = s.Position
+LEFT JOIN recruiting_costs rc ON h.Emp_Source = rc.Emp_Source;
 
 
 
