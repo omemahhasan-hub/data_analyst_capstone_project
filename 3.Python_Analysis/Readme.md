@@ -73,9 +73,9 @@ df3 = pd.read_sql("SELECT * FROM master_table3", conn)  # Department summary (6 
 - **Sales**: 12.9% turnover (most stable department)
 
 **Performance-Compensation Link**:
-- High performers earn **5% premium** over average performers
+- High performers earn **almost same** over low performers
 - Age correlation: **46-55 group** commands highest salaries ($60,391)
-- Manager impact: **Webster Butler's team** shows 60% turnover (leadership issue)
+- Manager impact: **Webster Butler's and Amy Dunn's team** shows 60% turnover (leadership issue)
 
 ### Recruitment ROI Optimization
 **Cost-Effectiveness Rankings**:
