@@ -4,7 +4,7 @@
 
 Transforming unstructured HR datasets into actionable business intelligence, identifying 32.6% turnover rate, pay equity gaps, and recruitment optimization opportunities through a complete data analytics pipeline.
 
-- [-Executive Summary](#executive-summary)
+- [Executive Summary](#-executive-summary)
 - [Technical Architecture](#technical-architecture)
 - [Repository Structure](#repository-structure)
 - [Business Impact Analysis](#business-impact-analysis)
