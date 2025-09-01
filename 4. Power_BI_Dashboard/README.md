@@ -98,7 +98,13 @@ GROUP BY Performance_Score;
 
 ### Deliverables
 - **[HR_Analytics_Executive_Dashboard.pbix](https://github.com/omemahhasan-hub/data_analyst_capstone_project/blob/main/4.%20Power_BI_Dashboard/4.2%20BI_dashboard_HR/capstone_BI_HR.pbix)** - Complete interactive dashboard
-- **[DAX_Measures_Documentation.txt](docs/DAX_Measures_Documentation.txt)** - Technical implementation reference
+**[Dashboard Screenshots]** - Executive presentation visuals
+  
+ **Executive Overview**  
+![Dashboard 1](<4. Power_BI_Dashboard/4.3 Screenshots_Dashboard/HR_dashboard_overview_1.PNG>)  
+
+**Investment Trends**  
+![Dashboard 2](images/dashboards/dashboard-2-sc.PNG)  
 - **[Dashboard Screenshots](images/)** - Executive presentation visuals
 
 ### Requirements
