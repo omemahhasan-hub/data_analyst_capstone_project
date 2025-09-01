@@ -127,7 +127,7 @@ Each phase includes detailed documentation and setup instructions:
 
 - **[SQL Implementation Guide](2.SQL_Analysis/Readme.md)** - Database setup and ETL procedures
 - **[Python Analysis Documentation](3.Python_Analysis/Readme.md)** - Statistical methods and validation processes  
-- **[Power BI Dashboard Guide](4.Power_BI_Dashboard/README.md)** - Dashboard functionality and KPI definitions
+- **[Power BI Dashboard Guide]((4.%20Power_BI_Dashboard/README.md))** - Dashboard functionality and KPI definitions
 
 ---
 
