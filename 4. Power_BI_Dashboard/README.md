@@ -98,13 +98,13 @@ GROUP BY Performance_Score;
 
 ### Deliverables
 - **[HR_Analytics_Executive_Dashboard.pbix](https://github.com/omemahhasan-hub/data_analyst_capstone_project/blob/main/4.%20Power_BI_Dashboard/4.2%20BI_dashboard_HR/capstone_BI_HR.pbix)** - Complete interactive dashboard
-**[Dashboard Screenshots](https://github.com/omemahhasan-hub/data_analyst_capstone_project/raw/main/4.%20Power_BI_Dashboard/4.3%20Screenshots_Dashboard/HR_dashboard_finance_2.PNG)** - Executive presentation visuals
+**[Dashboard Screenshots]** - Executive presentation visuals
   
  **Executive Overview**  
 ![Dashboard 1]  
 
 **Finance Trends**  
-![Dashboard 2]  
+![Dashboard 2](https://github.com/omemahhasan-hub/data_analyst_capstone_project/raw/main/4.%20Power_BI_Dashboard/4.3%20Screenshots_Dashboard/HR_dashboard_finance_2.PNG)  
 
 
 ### Requirements
