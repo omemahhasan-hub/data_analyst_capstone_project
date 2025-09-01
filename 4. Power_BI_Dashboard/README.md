@@ -100,7 +100,7 @@ GROUP BY Performance_Score;
 - **[HR_Analytics_Executive_Dashboard.pbix](https://github.com/omemahhasan-hub/data_analyst_capstone_project/blob/main/4.%20Power_BI_Dashboard/4.2%20BI_dashboard_HR/capstone_BI_HR.pbix)** - Complete interactive dashboard
 **[Dashboard Screenshots]** - Executive presentation visuals
 
-  [View Full High-Resolution Dashboard (PDF)](https://github.com/omemahhasan-hub/data_analyst_capstone_project/raw/main/4.%20Power_BI_Dashboard/4.2%20BI_dashboard_HR/capstone_BI_HR.pdf)
+  **[View Full High-Resolution Dashboard for best quality (PDF)](https://github.com/omemahhasan-hub/data_analyst_capstone_project/raw/main/4.%20Power_BI_Dashboard/4.2%20BI_dashboard_HR/capstone_BI_HR.pdf)**
  
  **Executive Overview**  
 ![Dashboard 1](https://github.com/omemahhasan-hub/data_analyst_capstone_project/raw/main/4.%20Power_BI_Dashboard/4.3%20Screenshots_Dashboard/HR_dashboard_overview_1.PNG)  
