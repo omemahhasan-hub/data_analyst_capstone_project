@@ -101,7 +101,7 @@ GROUP BY Performance_Score;
 **[Dashboard Screenshots]** - Executive presentation visuals
   
  **Executive Overview**  
-![Dashboard 1]([4.%20Power_BI_Dashboard/4.3%20Screenshots_Dashboard/HR_dashboard_overview_1.PNG](https://github.com/omemahhasan-hub/data_analyst_capstone_project/blob/main/4.%20Power_BI_Dashboard/4.3%20Screenshots_Dashboard/HR_dashboard_overview_1.PNG))  
+![Dashboard 1](https://github.com/omemahhasan-hub/data_analyst_capstone_project/raw/main/4.%20Power_BI_Dashboard/4.3%20Screenshots_Dashboard/HR_dashboard_overview_1.PNG)  
 
 **Finance Trends**  
 ![Dashboard 2](images/dashboards/dashboard-2-sc.PNG)  
