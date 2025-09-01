@@ -97,9 +97,9 @@ GROUP BY Performance_Score;
 ## Files & Setup
 
 ### Deliverables
-- **`capstone_BI_HR.pbix`** - Complete interactive dashboard
-- **`DAX_Measures_Documentation.txt`** - Technical implementation reference
-- **`Dashboard_Screenshots/`** - Executive presentation visuals
+- **[HR_Analytics_Executive_Dashboard.pbix](<4. Power_BI_Dashboard/4.2 BI_dashboard_HR/capstone_BI_HR.pbix4. Power_BI_Dashboard/4.2 BI_dashboard_HR/capstone_BI_HR.pbix>)** - Complete interactive dashboard
+- **[DAX_Measures_Documentation.txt](docs/DAX_Measures_Documentation.txt)** - Technical implementation reference
+- **[Dashboard Screenshots](images/)** - Executive presentation visuals
 
 ### Requirements
 - Power BI Desktop (latest version)
