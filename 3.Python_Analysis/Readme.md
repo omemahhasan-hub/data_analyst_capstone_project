@@ -26,7 +26,7 @@ This phase builds upon the SQL foundation to deliver advanced statistical analys
 | Database Integration | Cost-Benefit Analysis | Seaborn/Statistical Modeling |
 | Data Pipeline Design | Strategic Insights | Real-time Analytics |
 
-## 🔧 Technical Implementation
+##  Technical Implementation
 
 ### Database Integration
 Direct MySQL connectivity eliminates CSV dependencies and ensures real-time data access:
@@ -42,7 +42,7 @@ conn = mysql.connector.connect(
 )
 
 # Load master datasets
-df1 = pd.read_sql("SELECT * FROM master_table1", conn)  # Employee master (299 records)
+df1 = pd.read_sql("SELECT * FROM master_table1", conn)  # Employee master (301 records)
 df2 = pd.read_sql("SELECT * FROM master_table2", conn)  # Recruitment ROI (22 sources)
 df3 = pd.read_sql("SELECT * FROM master_table3", conn)  # Department summary (6 depts)
 ```
@@ -67,7 +67,7 @@ df3 = pd.read_sql("SELECT * FROM master_table3", conn)  # Department summary (6 
 - **Employees below band**: 230 employees flagged as flight risks
 
 ### Department Performance Patterns
-**Turnover Rate Analysis**:
+**Turnover Rate Analysis**: overall 32.6%
 - **Production**: 39.3% turnover rate (critical intervention needed)
 - **IT Department**: 24.4% turnover despite highest salaries ($79,063 avg)
 - **Sales**: 12.9% turnover (most stable department)
