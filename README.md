@@ -24,7 +24,7 @@ This capstone project demonstrates proficiency across the complete data analytic
 - Statistical analysis identifying 32.6% annual productivity impact from turnover
 - Executive dashboards enabling data-driven HR strategy decisions
 - Documented methodology ensuring reproducible analytical processes
-
+-Annual Productivity Loss Due to Turnover: ~$6.28M (98 employees at $64.1K avg. salary)
 ---
 
 ## Technical Architecture
@@ -63,7 +63,7 @@ HR-Analytics-Capstone/
 ## Business Impact Analysis
 
 ### Financial Insights Delivered
-- **Turnover Cost Analysis**: $3.9M annual productivity loss identified in Production department (39% turnover rate)
+- **Turnover Cost Analysis**: Annual productivity loss identified in Production department (32.6% turnover rate)
 - **Pay Equity Assessment**: $8,320 average gender pay differential identified (88% female-to-male compensation ratio)
 - **Recruitment ROI Optimization**: $50K+ potential annual savings through channel reallocation
 - **Risk Mitigation**: 230 employees (76.9%) flagged as flight risks due to below-band compensation
