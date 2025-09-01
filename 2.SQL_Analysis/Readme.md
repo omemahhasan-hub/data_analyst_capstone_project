@@ -15,7 +15,7 @@ This phase demonstrates comprehensive SQL skills through HR data analysis using 
 ##  Database Structure
 
 ### Original Datasets (4 Tables)
-- **`core_hr`** (309 records) - Employee demographics, employment details, compensation
+- **`core_hr`** (301 records) - Employee demographics, employment details, compensation
   - Primary Key: Composite (Emp_FName, Emp_LName, Emp_ID)
   - Contains: All company employees with complete demographic and employment data
 - **`production_staff`** (200 records) - Performance metrics and productivity data  
@@ -38,7 +38,7 @@ This phase demonstrates comprehensive SQL skills through HR data analysis using 
 
 ### Master Datasets Created
 
-#### 1. Employee Master Dataset (299 records)
+#### 1. Employee Master Dataset (301 records)
 **Purpose**: Comprehensive employee data integrating all sources  
 **Primary Key**: Emp_ID (from core_hr)  
 **Data Completeness**: 299 employees with demographics, 200 with performance metrics  
@@ -84,8 +84,8 @@ LEFT JOIN salary_grid s ON h.Position = s.Position;
 
 ### Table Relationships
 ```
-core_hr (309) ────┐
-                  ├─── employee_master (299)
+core_hr (301) ────┐
+                  ├─── employee_master (301)
 production_staff (200) ──┘         │
                                    │
 salary_grid (12) ──────────────────┤
@@ -94,7 +94,7 @@ recruiting_costs (22) ──────────────┘
 ```
 
 ### Key Relationships
-- **core_hr ← production_staff**: LEFT JOIN on name match (200/309 employees have performance data)
+- **core_hr ← production_staff**: LEFT JOIN on name match (200/301 employees have performance data)
 - **core_hr ← salary_grid**: LEFT JOIN on position match (salary bands for all positions)
 - **core_hr ← recruiting_costs**: LEFT JOIN on recruitment source match
 - **Data Completeness**: 67% of employees have complete profiles including performance metrics
@@ -107,7 +107,7 @@ recruiting_costs (22) ──────────────┘
 ## 📈 Key Business Insights Discovered
 
 ### Workforce Demographics
-- **Total Employees**: 299 across 4 departments
+- **Total Employees**: 301 across 6 departments
 - **Gender Distribution**: 174 Female, 125 Male
 - **Age Demographics**: Analyzed across 4 age cohorts (Under 30, 30-45, 46-55, Over 55)
 - **Diversity Metrics**: Race, marital status, and citizenship analysis
@@ -124,7 +124,7 @@ recruiting_costs (22) ──────────────┘
 - **Performance Distribution**: High performers earn average of $54,424 vs low performers at $42,375. High/Average/Low performer categorization.
 
 ### Recruitment Efficiency
-- **Cost-per-Hire**: Analysis across 8 recruitment sources
+- **Cost-per-Hire**: Analysis across 22 recruitment sources
 - **ROI by Source**: Investment vs. employee value correlation
 - **Source Effectiveness**: Performance and tenure by recruitment channel
 
