@@ -78,7 +78,7 @@ GROUP BY Performance_Score;
 - **Conditional Formatting**: Automated risk indicators and performance thresholds
 
 ### Strategic KPIs Visualized
-- **Financial Impact**: $3.9M turnover cost, $8,320 gender pay gap, recruitment ROI analysis
+- **Financial Impact**: $6.28M annual turnover cost, $8,320 gender pay gap, recruitment ROI analysis
 - **Risk Assessment**: 230 employees below pay bands, manager effectiveness correlation
 - **Performance Intelligence**: High performer premiums, department benchmarking
 
@@ -87,7 +87,7 @@ GROUP BY Performance_Score;
 ## Business Value
 
 ### Strategic Intelligence Delivered
-- **Retention Strategy**: Production department intervention (39% → 25% turnover = $1.2M savings)
+- **Retention Strategy**: Production department intervention 
 - **Recruitment Optimization**: Channel reallocation potential ($50K+ annual savings)
 - **Pay Equity Action Plan**: Compliance risk mitigation with quantified financial impact
 - **Management Development**: Data-driven leadership effectiveness assessment
