@@ -125,7 +125,7 @@ This multi-layer validation ensures analytical accuracy and stakeholder confiden
 
 Each phase includes detailed documentation and setup instructions:
 
-- **[SQL Implementation Guide](2.SQL_Analysis/2.1 Readme.md)** - Database setup and ETL procedures
+- **[SQL Implementation Guide](2.SQL_Analysis/2.1Readme.md)** - Database setup and ETL procedures
 - **[Python Analysis Documentation](3.Python_Analysis/Readme.md)** - Statistical methods and validation processes  
 - **[Power BI Dashboard Guide](PowerBI/README.md)** - Dashboard functionality and KPI definitions
 
